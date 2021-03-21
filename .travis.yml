@@ -6,6 +6,9 @@ go:
 script:
   - go test -coverprofile=coverage.txt -covermode=atomic `go list ./... | grep -v vendor/`
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
